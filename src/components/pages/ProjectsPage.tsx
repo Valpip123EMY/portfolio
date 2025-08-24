@@ -34,18 +34,18 @@ const allExperience: ExperienceOrProject[] = [
 ];
 
 const allProjects: ExperienceOrProject[] = [
-  {
-    id: 'robotics-tutor',
-    title: 'Robotics Tutor',
-    summary: 'Designed comprehensive robotics curriculum for annual outreach program, teaching fundamental programming and engineering concepts to 100+ elementary school students through hands-on VEX robotics activities. Organized summer STEM camps and mentored middle school VEX robotics competition teams, providing technical guidance on robot design, programming strategies, and competitive preparation.',
-    // thumbnail intentionally omitted to avoid school icon
-    category: 'Independent',
-    tech: ['VEX Robotics', 'Programming', 'Engineering', 'Curriculum Design'],
-    date: 'Sep 2021 – Jun 2024',
-    dateSort: new Date('2021-01-01'),
-    organization: 'New Providence School District',
-    role: 'Robotics Tutor',
-  },
+  // {
+  //   id: 'robotics-tutor',
+  //   title: 'Robotics Tutor',
+  //   summary: 'Designed comprehensive robotics curriculum for annual outreach program, teaching fundamental programming and engineering concepts to 100+ elementary school students through hands-on VEX robotics activities. Organized summer STEM camps and mentored middle school VEX robotics competition teams, providing technical guidance on robot design, programming strategies, and competitive preparation.',
+  //   // thumbnail intentionally omitted to avoid school icon
+  //   category: 'Independent',
+  //   tech: ['VEX Robotics', 'Programming', 'Engineering', 'Curriculum Design'],
+  //   date: 'Sep 2021 – Jun 2024',
+  //   dateSort: new Date('2021-01-01'),
+  //   organization: 'New Providence School District',
+  //   role: 'Robotics Tutor',
+  // },
   {
     id: 'dartmouth-ml-research',
   title: 'Retrieval Augmented Generation for Pathology Reports',

@@ -83,7 +83,7 @@ const ResearchWritingSlide = (() => {
     }, [currentLine, currentChar]);
 
     return (
-      <div className="w-full h-[360px] sm:h-96 rounded-3xl border border-slate-300/80 dark:border-white/12 bg-white/100 dark:bg-slate-900/90 p-5 shadow-sm overflow-hidden flex flex-col">
+      <div className="w-full min-h-[360px] sm:h-96 rounded-3xl border border-slate-300/80 dark:border-white/12 bg-white/100 dark:bg-slate-900/90 p-5 shadow-sm overflow-hidden flex flex-col">
         <div className="flex items-center gap-2 mb-4">
           <FileText className="w-5 h-5 text-red-700 dark:text-indigo-300" />
           <span className="text-slate-900 dark:text-slate-200 text-sm font-medium">Research Paper</span>
@@ -271,7 +271,7 @@ const MinimalLine = (() => {
     const negativeFillColor = 'var(--negative-fill, #dc2626)';
 
     return (
-      <div className="w-full h-[360px] sm:h-96 rounded-3xl border border-slate-300/90 dark:border-white/12 bg-white/100 dark:bg-slate-900/60 p-6 shadow-md overflow-hidden relative [--negative-stroke:#dc2626] dark:[--negative-stroke:#6366f1] [--negative-fill:#dc2626] dark:[--negative-fill:#6366f1]">
+      <div className="w-full min-h-[360px] sm:h-96 rounded-3xl border border-slate-300/90 dark:border-white/12 bg-white/100 dark:bg-slate-900/60 p-6 shadow-md overflow-hidden relative [--negative-stroke:#dc2626] dark:[--negative-stroke:#6366f1] [--negative-fill:#dc2626] dark:[--negative-fill:#6366f1]">
         {/* Crisper grid background */}
   {/* Background grid now handled globally in layout */}
 
@@ -436,7 +436,7 @@ const ResearchStack = (() => {
     ];
 
     return (
-      <div className="w-full h-[360px] sm:h-96 rounded-3xl border border-slate-300/80 dark:border-white/12 bg-white/100 dark:bg-slate-900/60 p-6 shadow-sm overflow-hidden flex flex-col justify-between">
+      <div className="w-full min-h-[360px] sm:h-96 rounded-3xl border border-slate-300/80 dark:border-white/12 bg-white/100 dark:bg-slate-900/60 p-6 shadow-sm overflow-hidden flex flex-col justify-between">
         <div className="flex items-center gap-2 mb-4">
           <FileText className="w-5 h-5 text-red-600 dark:text-indigo-400" />
           <span className="text-slate-900 dark:text-slate-200 text-sm font-medium">Research</span>
@@ -512,7 +512,7 @@ const CalmDashboard = (() => {
     const tags = ['Accuracy', 'Loss', 'Precision', 'Recall'];
 
     return (
-      <div className="w-full h-[360px] sm:h-96 rounded-3xl border border-slate-200/80 dark:border-white/12 bg-white/96 dark:bg-white/6 backdrop-blur-xs p-5 shadow-xl flex flex-col overflow-hidden">
+      <div className="w-full min-h-[360px] sm:h-96 rounded-3xl border border-slate-200/80 dark:border-white/12 bg-white/96 dark:bg-white/6 backdrop-blur-xs p-5 shadow-xl flex flex-col overflow-hidden">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
             <Database className="w-5 h-5 text-red-600 dark:text-indigo-400" />
@@ -620,7 +620,7 @@ const CalmMLPipeline = (() => {
     }, [currentLine, currentChar]);
 
     return (
-  <div className="w-full h-[360px] sm:h-96 rounded-3xl border border-slate-300/80 dark:border-white/12 bg-white/100 dark:bg-slate-900/90 p-5 shadow-sm overflow-hidden flex flex-col">
+  <div className="w-full min-h-[360px] sm:h-96 rounded-3xl border border-slate-300/80 dark:border-white/12 bg-white/100 dark:bg-slate-900/90 p-5 shadow-sm overflow-hidden flex flex-col">
       <div className="flex items-center gap-2 mb-4">
         <Code className="w-5 h-5 text-red-700 dark:text-indigo-300" />
         <span className="text-slate-900 dark:text-slate-200 text-sm font-medium">Code</span>
@@ -724,7 +724,7 @@ export function Hero() {
 
   return (
 
-  <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+  <section className="relative min-h-screen flex items-center justify-center overflow-hidden pb-8 sm:pb-0">
 
       <div className="container mx-auto px-6 lg:px-8 relative z-10 pt-20">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
