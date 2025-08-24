@@ -269,11 +269,11 @@ export function ProjectsPage() {
         variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } }}
         className="text-center mb-4"
       >
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#e3e6f3] dark:text-[#e3e6f3] font-sans tracking-tight drop-shadow-sm" style={{ letterSpacing: '-0.01em', fontFamily: 'Inter, ui-sans-serif, system-ui' }}>
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900 dark:text-[#e3e6f3] font-sans tracking-tight drop-shadow-sm" style={{ letterSpacing: '-0.01em', fontFamily: 'Inter, ui-sans-serif, system-ui' }}>
           Projects
         </h2>
-        <p className="text-sm md:text-base text-[#b3baff]/80 mb-1 font-light">
-          <span className="font-medium text-[#b3baff]">{allProjects.length} projects</span> in research, competitions, and independent work
+        <p className="text-sm md:text-base text-slate-600 dark:text-[#b3baff]/80 mb-1 font-light">
+          <span className="font-medium text-slate-700 dark:text-[#b3baff]">{allProjects.length} projects</span> in research, competitions, and independent work
         </p>
       </motion.div>
 
@@ -286,19 +286,19 @@ export function ProjectsPage() {
       >
         {/* Search Bar */}
         <div className="relative w-full md:w-72">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-[#b3baff]/60 w-4 h-4" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 dark:text-[#b3baff]/60 w-4 h-4" />
           <input
             type="text"
             placeholder="Search projects, technologies, organizations..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-9 pr-4 py-2 rounded-md border border-[#23263a]/60 bg-[#23263a] text-[#e3e6f3] placeholder-[#b3baff]/40 text-sm focus:outline-none focus:ring-2 focus:ring-[#b3baff]/20 transition shadow-sm"
+            className="w-full pl-9 pr-4 py-2 rounded-md border border-slate-300 dark:border-[#23263a]/60 bg-white dark:bg-[#23263a] text-slate-900 dark:text-[#e3e6f3] placeholder-slate-500 dark:placeholder-[#b3baff]/40 text-sm focus:outline-none focus:ring-2 focus:ring-red-500/20 dark:focus:ring-[#b3baff]/20 transition shadow-sm"
             style={{ fontFamily: 'Inter, ui-sans-serif, system-ui' }}
           />
           {searchTerm && (
             <button
               onClick={() => setSearchTerm('')}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-[#b3baff]/60 hover:text-[#b3baff]"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 dark:text-[#b3baff]/60 hover:text-slate-700 dark:hover:text-[#b3baff]"
             >
               <X className="w-4 h-4" />
             </button>
@@ -307,11 +307,11 @@ export function ProjectsPage() {
 
         {/* Category Filter */}
         <div className="flex items-center gap-1">
-          <Filter className="w-4 h-4 text-[#b3baff]/60" />
+          <Filter className="w-4 h-4 text-slate-500 dark:text-[#b3baff]/60" />
           <select
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
-            className="px-3 py-2 rounded-md border border-[#23263a]/60 bg-[#23263a] text-[#b3baff] text-xs font-medium focus:outline-none focus:ring-2 focus:ring-[#b3baff]/20"
+            className="px-3 py-2 rounded-md border border-slate-300 dark:border-[#23263a]/60 bg-white dark:bg-[#23263a] text-slate-700 dark:text-[#b3baff] text-xs font-medium focus:outline-none focus:ring-2 focus:ring-red-500/20 dark:focus:ring-[#b3baff]/20"
             style={{ fontFamily: 'Inter, ui-sans-serif, system-ui' }}
           >
             {categories.map(category => (
@@ -324,11 +324,11 @@ export function ProjectsPage() {
 
         {/* Sort Control */}
         <div className="flex items-center gap-1">
-          <Calendar className="w-4 h-4 text-[#b3baff]/60" />
+          <Calendar className="w-4 h-4 text-slate-500 dark:text-[#b3baff]/60" />
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value as 'date' | 'title' | 'category')}
-            className="px-3 py-2 rounded-md border border-[#23263a]/60 bg-[#23263a] text-[#b3baff] text-xs font-medium focus:outline-none focus:ring-2 focus:ring-[#b3baff]/20"
+            className="px-3 py-2 rounded-md border border-slate-300 dark:border-[#23263a]/60 bg-white dark:bg-[#23263a] text-slate-700 dark:text-[#b3baff] text-xs font-medium focus:outline-none focus:ring-2 focus:ring-red-500/20 dark:focus:ring-[#b3baff]/20"
             style={{ fontFamily: 'Inter, ui-sans-serif, system-ui' }}
           >
             <option value="date">Sort by Date</option>
@@ -339,7 +339,7 @@ export function ProjectsPage() {
       </motion.div>
 
       {/* Results Counter */}
-      <div className="text-center text-xs text-[#b3baff]/60 mb-2">
+      <div className="text-center text-xs text-slate-500 dark:text-[#b3baff]/60 mb-2">
         {filteredProjects.length === allProjects.length
           ? `Showing all ${allProjects.length} projects`
           : `Showing ${filteredProjects.length} of ${allProjects.length} projects`
@@ -419,7 +419,7 @@ export function ProjectsPage() {
                         href={item.links[0].url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-lg md:text-xl font-bold text-[#e3e6f3] dark:text-[#e3e6f3] hover:text-[#b3baff] dark:hover:text-indigo-300 transition-colors group/link leading-tight block font-sans tracking-tight drop-shadow-sm focus:outline-none focus:ring-2 focus:ring-[#b3baff]/40 rounded"
+                        className="text-lg md:text-xl font-bold text-slate-900 dark:text-[#e3e6f3] hover:text-red-600 dark:hover:text-indigo-300 transition-colors group/link leading-tight block font-sans tracking-tight drop-shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500/40 dark:focus:ring-[#b3baff]/40 rounded"
                         aria-label={`External link to ${item.title}`}
                         style={{ letterSpacing: '-0.01em', fontFamily: 'Inter, ui-sans-serif, system-ui' }}
                       >
@@ -427,7 +427,7 @@ export function ProjectsPage() {
                         <ExternalLinkIcon className="w-5 h-5 opacity-60 group-hover/link:opacity-100 ml-2 transition-opacity duration-200 inline align-middle" style={{ verticalAlign: '-0.125em' }} />
                       </a>
                     ) : (
-                      <h3 className="text-lg md:text-xl font-bold text-[#e3e6f3] dark:text-[#e3e6f3] leading-tight font-sans tracking-tight drop-shadow-sm" style={{ letterSpacing: '-0.01em', fontFamily: 'Inter, ui-sans-serif, system-ui' }}>{item.title}</h3>
+                      <h3 className="text-lg md:text-xl font-bold text-slate-900 dark:text-[#e3e6f3] leading-tight font-sans tracking-tight drop-shadow-sm" style={{ letterSpacing: '-0.01em', fontFamily: 'Inter, ui-sans-serif, system-ui' }}>{item.title}</h3>
                     )}
                   </div>
                 </div>
