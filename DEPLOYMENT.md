@@ -1,17 +1,19 @@
 # 🚀 DEPLOYMENT QUICK START GUIDE
 
-Your portfolio is now ready for deployment! Here are your fastest options:
+Your portfolio is now ready for deployment to GitHub Pages! Here's how to get it live:
 
-## ⚡ FASTEST - Deploy to Vercel (1-Click)
+## ⚡ FASTEST - Deploy to GitHub Pages (Automatic)
 
-1. **Visit** [vercel.com](https://vercel.com) and sign up/login
-2. **Click "Import Project"** and connect your GitHub account
-3. **Select this repository**: `Valpip123EMY/portfolio.io`
-4. **Click Deploy** - That's it! ✨
+1. **Fork this repository** to your GitHub account
+2. **Enable GitHub Pages** in your repository settings:
+   - Go to Settings → Pages
+   - Source: Select "GitHub Actions"
+3. **Push changes** to the main branch
+4. **Your site will be live** at `https://yourusername.github.io/portfolio.github.io/` ✨
 
-Vercel will automatically:
+GitHub Pages will automatically:
 - Detect it's a Next.js project
-- Build and deploy your portfolio
+- Build and deploy your portfolio using the included workflow
 - Provide a live URL instantly
 - Set up automatic deployments for future updates
 
@@ -23,7 +25,6 @@ npm run build
 
 # 2. Upload the 'out' folder to any static hosting:
 # - Netlify: Drag 'out' folder to netlify.com/drop
-# - GitHub Pages: Upload to gh-pages branch
 # - AWS S3: Upload 'out' contents to S3 bucket
 # - Any other static host
 ```
