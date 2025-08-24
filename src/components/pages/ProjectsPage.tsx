@@ -419,15 +419,15 @@ export function ProjectsPage() {
                         href={item.links[0].url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-lg md:text-xl font-bold text-slate-900 dark:text-[#e3e6f3] hover:text-red-600 dark:hover:text-indigo-300 transition-colors group/link leading-tight block font-sans tracking-tight drop-shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500/40 dark:focus:ring-[#b3baff]/40 rounded"
+                        className="font-bold text-slate-900 dark:text-[#e3e6f3] hover:text-red-600 dark:hover:text-indigo-300 transition-colors group/link leading-tight block font-sans tracking-tight drop-shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500/40 dark:focus:ring-[#b3baff]/40 rounded"
                         aria-label={`External link to ${item.title}`}
-                        style={{ letterSpacing: '-0.01em', fontFamily: 'Inter, ui-sans-serif, system-ui' }}
+                        style={{ fontSize: '17px', letterSpacing: '-0.01em', fontFamily: 'Inter, ui-sans-serif, system-ui' }}
                       >
                         {item.title}
                         <ExternalLinkIcon className="w-5 h-5 opacity-60 group-hover/link:opacity-100 ml-2 transition-opacity duration-200 inline align-middle" style={{ verticalAlign: '-0.125em' }} />
                       </a>
                     ) : (
-                      <h3 className="text-lg md:text-xl font-bold text-slate-900 dark:text-[#e3e6f3] leading-tight font-sans tracking-tight drop-shadow-sm" style={{ letterSpacing: '-0.01em', fontFamily: 'Inter, ui-sans-serif, system-ui' }}>{item.title}</h3>
+                      <h3 className="font-bold text-slate-900 dark:text-[#e3e6f3] leading-tight font-sans tracking-tight drop-shadow-sm" style={{ fontSize: '17px', letterSpacing: '-0.01em', fontFamily: 'Inter, ui-sans-serif, system-ui' }}>{item.title}</h3>
                     )}
                   </div>
                 </div>
