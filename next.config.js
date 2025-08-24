@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'standalone', // Enable for Docker deployment
   images: {
     domains: [
       'static.wixstatic.com',
