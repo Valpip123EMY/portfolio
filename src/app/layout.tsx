@@ -124,22 +124,22 @@ export default function RootLayout({
             <div className="fixed inset-0 z-0">
               {/* Main gradient background */}
               <div className="absolute inset-0 bg-white dark:bg-gradient-to-br dark:from-indigo-950 dark:via-slate-950 dark:to-indigo-900" />
-              
-              {/* Grid overlay */}
-              <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.03] bg-[linear-gradient(#000_1px,transparent_1px),linear-gradient(90deg,#000_1px,transparent_1px)] dark:bg-[linear-gradient(#fff_1px,transparent_1px),linear-gradient(90deg,#fff_1px,transparent_1px)] bg-[size:32px_32px]" />
-              
+
+              {/* Grid overlay - disabled to prevent conflicts with Hero grid */}
+              {/* <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.03] bg-[linear-gradient(#000_1px,transparent_1px),linear-gradient(90deg,#000_1px,transparent_1px)] dark:bg-[linear-gradient(#fff_1px,transparent_1px),linear-gradient(90deg,#fff_1px,transparent_1px)] bg-[size:32px_32px]" /> */}
+
               {/* Floating shimmer balls */}
               <div className="floating-balls">
-                <span className="floating-ball" style={{left:'6%',top:'8%',width:'260px',height:'260px','--ball-color':'rgba(220,38,38,0.10)',animationDuration:'22s',animationDelay:'0s'} as any} />
-                <span className="floating-ball" style={{left:'78%',top:'4%',width:'180px',height:'180px','--ball-color':'rgba(99,102,241,0.10)',animationDuration:'18s',animationDelay:'3s'} as any} />
-                <span className="floating-ball" style={{left:'28%',top:'56%',width:'320px',height:'320px','--ball-color':'rgba(250,204,21,0.06)',animationDuration:'28s',animationDelay:'6s'} as any} />
-                <span className="floating-ball" style={{left:'62%',top:'40%',width:'140px',height:'140px','--ball-color':'rgba(20,184,166,0.08)',animationDuration:'16s',animationDelay:'2s'} as any} />
-                <span className="floating-ball" style={{left:'45%',top:'12%',width:'100px',height:'100px','--ball-color':'rgba(236,72,153,0.07)',animationDuration:'14s',animationDelay:'1s'} as any} />
-                <span className="floating-ball" style={{left:'10%',top:'72%',width:'200px',height:'200px','--ball-color':'rgba(99,102,241,0.06)',animationDuration:'20s',animationDelay:'4s'} as any} />
-                <span className="floating-ball" style={{left:'84%',top:'74%',width:'260px',height:'260px','--ball-color':'rgba(220,38,38,0.06)',animationDuration:'26s',animationDelay:'8s'} as any} />
+                <span className="floating-ball" style={{ left: '6%', top: '8%', width: '260px', height: '260px', ['--ball-color' as any]: 'rgba(220,38,38,0.10)', animationDuration: '22s', animationDelay: '0s' } as any} />
+                <span className="floating-ball" style={{ left: '78%', top: '4%', width: '180px', height: '180px', ['--ball-color' as any]: 'rgba(99,102,241,0.10)', animationDuration: '18s', animationDelay: '3s' } as any} />
+                <span className="floating-ball" style={{ left: '28%', top: '56%', width: '320px', height: '320px', ['--ball-color' as any]: 'rgba(250,204,21,0.06)', animationDuration: '28s', animationDelay: '6s' } as any} />
+                <span className="floating-ball" style={{ left: '62%', top: '40%', width: '140px', height: '140px', ['--ball-color' as any]: 'rgba(20,184,166,0.08)', animationDuration: '16s', animationDelay: '2s' } as any} />
+                <span className="floating-ball" style={{ left: '45%', top: '12%', width: '100px', height: '100px', ['--ball-color' as any]: 'rgba(236,72,153,0.07)', animationDuration: '14s', animationDelay: '1s' } as any} />
+                <span className="floating-ball" style={{ left: '10%', top: '72%', width: '200px', height: '200px', ['--ball-color' as any]: 'rgba(99,102,241,0.06)', animationDuration: '20s', animationDelay: '4s' } as any} />
+                <span className="floating-ball" style={{ left: '84%', top: '74%', width: '260px', height: '260px', ['--ball-color' as any]: 'rgba(220,38,38,0.06)', animationDuration: '26s', animationDelay: '8s' } as any} />
               </div>
             </div>
-            
+
             <div className="relative z-10">
               <Header />
               <main>{children}</main>

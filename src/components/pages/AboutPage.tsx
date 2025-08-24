@@ -2,7 +2,8 @@
 
 
 import { motion } from 'framer-motion';
-import { Code, Database, Lightbulb, Users, GraduationCap, Sparkles } from 'lucide-react';
+import { Code, Database, Lightbulb, Users, GraduationCap, User2 } from 'lucide-react';
+import '../../app/middleearth.css';
 
 const fadeIn = {
   hidden: { opacity: 0, y: 30 },
@@ -32,102 +33,104 @@ const skills = [
   }
 ];
 
+
 export function AboutPage() {
   return (
-  <section className="relative min-h-screen flex flex-col justify-start items-center pt-16 pb-8 px-4">
-      <div className="max-w-6xl w-full mx-auto">
-        {/* Animated Gradient Heading */}
-        <motion.h1
-          initial="hidden"
-          animate="visible"
-          variants={fadeIn}
-          className="text-center text-3xl md:text-4xl font-bold mb-4 text-[#e3e6f3] dark:text-[#e3e6f3] font-sans tracking-tight drop-shadow-sm"
-          style={{ letterSpacing: '-0.01em', fontFamily: 'Inter, ui-sans-serif, system-ui' }}
-        >
-          About Me
-        </motion.h1>
-        {/* Professional Summary */}
-        <motion.p
-          initial="hidden"
-          animate="visible"
-          variants={fadeIn}
-          className="text-center text-lg md:text-xl text-slate-600 dark:text-slate-300 mb-16 max-w-3xl mx-auto leading-relaxed"
-        >
-          Data Science student with a passion for building intelligent systems that solve real-world problems. I love working at the intersection of technology and impact.
-        </motion.p>
-
-        {/* About Me */}
+    <section className="relative min-h-screen flex flex-col justify-start pt-16 pb-8 overflow-hidden">
+      <div className="relative z-10 max-w-4xl mx-auto px-2 sm:px-4 lg:px-6">
+        {/* Section Header */}
         <motion.div
           initial="hidden"
           animate="visible"
           variants={fadeIn}
-          className="mb-16"
+          className="text-center mb-4"
         >
-          <div className="p-6 border border-slate-200/60 dark:border-slate-700/60 bg-slate-50/50 dark:bg-slate-800/30 rounded-lg">
-            <h2 className="text-xl font-semibold text-slate-900 dark:text-slate-100 mb-4">About Me</h2>
-            <div className="space-y-3 text-slate-700 dark:text-slate-300 leading-relaxed">
-              <p>
-                I'm a Data Science student at UC San Diego with experience in machine learning research, data analysis, and building scalable solutions. My work spans various domains from healthcare to finance, always focused on creating meaningful impact.
-              </p>
-              <p>
-                Whether it's developing ML models, automating workflows, or diving deep into research, I enjoy tackling complex problems with creative approaches. I believe in learning by doing and am always excited to take on new challenges.
-              </p>
-            </div>
-          </div>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900 dark:text-[#e3e6f3] font-sans tracking-tight drop-shadow-sm" style={{ letterSpacing: '-0.01em', fontFamily: 'Inter, ui-sans-serif, system-ui' }}>
+            About Me
+          </h2>
+          <p className="text-sm md:text-base text-slate-600 dark:text-[#b3baff]/80 mb-1 font-light">
+            {/* Optionally add a subtitle or summary here */}
+          </p>
         </motion.div>
 
-        {/* Skills */}
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={fadeIn}
-          className="mb-16"
-        >
-          <h2 className="text-xl font-semibold text-slate-900 dark:text-slate-100 mb-6">What I Work With</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {skills.map((skill, i) => (
-              <motion.div
-                key={i}
-                custom={i}
-                initial="hidden"
-                animate="visible"
-                variants={fadeIn}
-                className="p-4 border border-slate-200/60 dark:border-slate-700/60 bg-slate-50/50 dark:bg-slate-800/30 rounded-lg"
-              >
-                <skill.icon className="w-6 h-6 text-red-600 dark:text-indigo-400 mb-2" />
-                <h3 className="text-sm font-medium text-slate-900 dark:text-slate-100 mb-1">{skill.title}</h3>
-                <p className="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">{skill.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+        {/* Main Content: 2-column grid on desktop */}
 
-        {/* Education */}
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={fadeIn}
-        >
-          <div className="max-w-2xl mx-auto">
-            <div className="flex items-center gap-2 mb-4">
-              <GraduationCap className="w-5 h-5 text-red-600 dark:text-indigo-400" />
-              <h2 className="text-xl font-semibold text-slate-900 dark:text-slate-100">Education</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start mb-16">
+          {/* Left: About (no box) */}
+          <motion.div initial="hidden" animate="visible" variants={fadeIn} className="space-y-8">
+            <div>
+              <h2 className="text-2xl font-semibold text-slate-900 dark:text-slate-100 mb-3 flex items-center gap-2">
+                <User2 className="w-6 h-6 text-red-600 dark:text-indigo-400" />
+                Who I Am
+              </h2>
+              <div className="space-y-4 text-slate-700 dark:text-slate-300 leading-relaxed text-base md:text-lg">
+                <p>
+                  I’m a Data Science student at <span className="font-semibold text-red-700 dark:text-indigo-400">UC San Diego</span> with hands-on experience in machine learning research, data analysis, and scalable solutions. My work spans healthcare, finance, and more—always focused on meaningful impact.
+                </p>
+                <p>
+                  Whether developing ML models, automating workflows, or diving deep into research, I thrive on tackling complex problems with creative, practical approaches. I believe in learning by doing and am always excited to take on new challenges.
+                </p>
+              </div>
             </div>
-            <div className="border border-slate-200/60 dark:border-slate-700/60 bg-slate-50/50 dark:bg-slate-800/30 rounded-lg p-5">
-              <div className="flex justify-between items-start mb-2">
-                <div>
-                  <h3 className="text-base font-medium text-slate-900 dark:text-slate-100">UC San Diego</h3>
-                  <div className="text-slate-700 dark:text-slate-200 text-sm">B.S. Data Science</div>
+          </motion.div>
+
+          {/* Right: Skills Grid (no box) + Soft Skills below */}
+          <motion.div initial="hidden" animate="visible" variants={fadeIn} className="space-y-8">
+            <div>
+              <h2 className="text-2xl font-semibold text-slate-900 dark:text-slate-100 mb-4 flex items-center gap-2">
+                <Code className="w-6 h-6 text-red-600 dark:text-indigo-400" />
+                My Toolkit
+              </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {skills.map((skill, i) => (
+                  <motion.div
+                    key={i}
+                    custom={i}
+                    initial="hidden"
+                    animate="visible"
+                    variants={fadeIn}
+                    className="flex items-start gap-3"
+                  >
+                    <skill.icon className="w-7 h-7 text-red-600 dark:text-indigo-400 mt-1" />
+                    <div>
+                      <h3 className="text-base font-semibold text-slate-900 dark:text-slate-100 mb-1">{skill.title}</h3>
+                      <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">{skill.description}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+              {/* Soft Skills under Toolkit */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-10">
+                <div className="flex flex-col items-center">
+                  <Users className="w-6 h-6 text-red-600 dark:text-indigo-400 mb-1" />
+                  <span className="text-sm font-semibold text-slate-800 dark:text-slate-200">Team Player</span>
+                  <span className="text-xs text-slate-500 dark:text-slate-400 mt-1 text-center">Collaboration & communication at the core of my work.</span>
                 </div>
-                <span className="text-slate-500 dark:text-slate-400 text-sm">2024 – Present</span>
-              </div>
-              <div className="text-slate-600 dark:text-slate-400 text-sm">
-                Focusing on machine learning, statistical methods, and data-driven problem solving
+                <div className="flex flex-col items-center">
+                  <Lightbulb className="w-6 h-6 text-red-600 dark:text-indigo-400 mb-1" />
+                  <span className="text-sm font-semibold text-slate-800 dark:text-slate-200">Creative Thinker</span>
+                  <span className="text-xs text-slate-500 dark:text-slate-400 mt-1 text-center">Solving problems with fresh, practical ideas.</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <GraduationCap className="w-6 h-6 text-red-600 dark:text-indigo-400 mb-1" />
+                  <span className="text-sm font-semibold text-slate-800 dark:text-slate-200">Lifelong Learner</span>
+                  <span className="text-xs text-slate-500 dark:text-slate-400 mt-1 text-center">Always growing, always curious, always improving.</span>
+                </div>
               </div>
             </div>
-          </div>
+          </motion.div>
+        </div>
+
+
+
+        {/* Closing Quote or CTA */}
+        <motion.div initial="hidden" animate="visible" variants={fadeIn} className="max-w-2xl mx-auto text-center mt-8">
+          <span className="middle-earth block text-slate-800 dark:text-slate-200 text-lg md:text-xl">
+            "All we have to decide is what to do with the time that is given us."
+          </span>
+          <span className="block mt-2 text-xs text-slate-500 dark:text-slate-400 font-serif tracking-wide">— Gandalf</span>
         </motion.div>
       </div>
-  </section>
+    </section>
   );
 }

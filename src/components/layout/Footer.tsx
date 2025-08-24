@@ -46,7 +46,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="relative bg-indigo-800/50 border-t border-slate-700/50">
+  <footer className="relative bg-slate-900/90 dark:bg-indigo-900/80 border-t border-slate-700/50">
       {/* Noise overlay */}
       <div className="absolute inset-0 noise-overlay" />
       
@@ -55,13 +55,13 @@ export function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
             {/* Explore */}
             <div>
-              <h3 className="text-white font-semibold mb-4">Explore</h3>
+              <h3 className="text-slate-100 dark:text-white font-semibold mb-4">Explore</h3>
               <ul className="space-y-2">
                 {footerLinks.explore.map((link) => (
                   <li key={link.name}>
                     <Link
                       href={link.href}
-                      className="text-slate-300 hover:text-white transition-colors duration-200"
+                      className="text-slate-300 hover:text-slate-100 dark:hover:text-white transition-colors duration-200"
                     >
                       {link.name}
                     </Link>
@@ -72,13 +72,13 @@ export function Footer() {
 
             {/* Projects */}
             <div>
-              <h3 className="text-white font-semibold mb-4">Projects</h3>
+              <h3 className="text-slate-100 dark:text-white font-semibold mb-4">Projects</h3>
               <ul className="space-y-2">
                 {footerLinks.projects.map((link) => (
                   <li key={link.name}>
                     <Link
                       href={link.href}
-                      className="text-slate-300 hover:text-white transition-colors duration-200"
+                      className="text-slate-300 hover:text-slate-100 dark:hover:text-white transition-colors duration-200"
                     >
                       {link.name}
                     </Link>
@@ -89,13 +89,13 @@ export function Footer() {
 
             {/* Education */}
             <div>
-              <h3 className="text-white font-semibold mb-4">Education</h3>
+              <h3 className="text-slate-100 dark:text-white font-semibold mb-4">Education</h3>
               <ul className="space-y-2">
                 {footerLinks.education.map((link) => (
                   <li key={link.name}>
                     <Link
                       href={link.href}
-                      className="text-slate-300 hover:text-white transition-colors duration-200"
+                      className="text-slate-300 hover:text-slate-100 dark:hover:text-white transition-colors duration-200"
                     >
                       {link.name}
                     </Link>
@@ -106,7 +106,7 @@ export function Footer() {
 
             {/* Connect */}
             <div>
-              <h3 className="text-white font-semibold mb-4">Connect</h3>
+              <h3 className="text-slate-100 dark:text-white font-semibold mb-4">Connect</h3>
               <ul className="space-y-2">
                 {footerLinks.connect.map((link) => (
                   <li key={link.name}>
@@ -114,7 +114,7 @@ export function Footer() {
                       href={link.href}
                       target={link.external ? '_blank' : undefined}
                       rel={link.external ? 'noopener noreferrer' : undefined}
-                      className="text-slate-300 hover:text-white transition-colors duration-200"
+                      className="text-slate-300 hover:text-slate-100 dark:hover:text-white transition-colors duration-200"
                     >
                       {link.name}
                     </Link>

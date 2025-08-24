@@ -6,10 +6,10 @@ import { ContactPage } from '../components/pages/ContactPage';
 
 export const metadata: Metadata = {
   title: 'Valmik Nahata | Data Science Student & ML Researcher',
-  description: 'UC San Diego Data Science student passionate about machine learning, research, and building impactful solutions.',
+  description: 'UC San Diego student passionate about machine learning, research, and building impactful solutions.',
   openGraph: {
     title: 'Valmik Nahata | Data Science Student & ML Researcher',
-    description: 'UC San Diego Data Science student passionate about machine learning and research',
+    description: 'UC San Diego student passionate about machine learning and research',
   },
 };
 

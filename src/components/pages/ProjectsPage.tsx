@@ -1,9 +1,14 @@
-'use client';
+"use client";
 
-import { useState, useMemo } from 'react';
+// FitText hook: dynamically adjusts font size to fit container height
+"use client";
+
+// useState and useMemo already imported above
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Search, Filter, X, Calendar, MapPin, Award, ExternalLink, BookOpen, Trophy, Code2, Building2, ExternalLink as ExternalLinkIcon, ChevronDown, ChevronUp } from 'lucide-react';
+import { useRef, useLayoutEffect, useState, useMemo } from 'react';
+import type { MutableRefObject } from 'react';
 
 type ExperienceOrProject = {
   id: string;
@@ -381,7 +386,7 @@ export function ProjectsPage() {
                 aria-label={`Project: ${item.title}`}
               >
                 {/* Header with image, title, status, and category */}
-                <div className="flex items-start gap-4 mb-6">
+                <div className="flex items-stretch gap-4 mb-6">
                   {item.thumbnail && item.id !== 'robotics-tutor' && (
                     <div className="flex-shrink-0 relative">
                       {imageLoadingStates[item.id] === 'loading' && (
@@ -403,9 +408,9 @@ export function ProjectsPage() {
                       )}
                     </div>
                   )}
-                  <div className="flex-1 min-w-0 space-y-2">
+                  <div className="flex-1 min-w-0 h-20 flex flex-col justify-start items-start">
                     {/* Category Badge */}
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 mb-0">
                       {(Array.isArray(item.category) ? item.category : [item.category]).map((cat) => (
                         <span key={cat} className="px-2 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-medium">
                           {cat === 'Competitions' ? 'Competition' : cat}
@@ -413,22 +418,37 @@ export function ProjectsPage() {
                       ))}
                     </div>
 
-                    {/* Title with link - improved UI/UX theme */}
-                    {item.links && item.links.length > 0 ? (
-                      <a
-                        href={item.links[0].url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="font-bold text-slate-900 dark:text-[#e3e6f3] hover:text-red-600 dark:hover:text-indigo-300 transition-colors group/link leading-tight block font-sans tracking-tight drop-shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500/40 dark:focus:ring-[#b3baff]/40 rounded"
-                        aria-label={`External link to ${item.title}`}
-                        style={{ fontSize: '16px', letterSpacing: '-0.01em', fontFamily: 'Inter, ui-sans-serif, system-ui' }}
-                      >
-                        {item.title}
-                        <ExternalLinkIcon className="w-5 h-5 opacity-60 group-hover/link:opacity-100 ml-2 transition-opacity duration-200 inline align-middle" style={{ verticalAlign: '-0.125em' }} />
-                      </a>
-                    ) : (
-                      <h3 className="font-bold text-slate-900 dark:text-[#e3e6f3] leading-tight font-sans tracking-tight drop-shadow-sm" style={{ fontSize: '16px', letterSpacing: '-0.01em', fontFamily: 'Inter, ui-sans-serif, system-ui' }}>{item.title}</h3>
-                    )}
+                    {/* Title - always same font, weight, and spacing for all cards */}
+                    <h3
+                      className="font-bold text-slate-900 dark:text-[#e3e6f3] font-sans tracking-tight drop-shadow-sm leading-tight"
+                      style={{
+                        fontSize: '15px',
+                        letterSpacing: '-0.01em',
+                        fontFamily: 'Inter, ui-sans-serif, system-ui',
+                        lineHeight: '1.3',
+                        fontWeight: 700,
+                        margin: 0,
+                        marginTop: '10px'
+                      }}
+                    >
+                      {item.title}
+                      {item.links && item.links.length > 0 && (
+                        <a
+                          href={item.links[0].url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`External link to ${item.title}`}
+                          className="ml-1 inline-flex items-center align-middle text-slate-500 hover:text-red-600 dark:hover:text-indigo-300 focus:outline-none focus:ring-2 focus:ring-red-500/40 dark:focus:ring-[#b3baff]/40"
+                          style={{ marginLeft: '0.25rem', verticalAlign: 'middle' }}
+                        >
+                          <ExternalLinkIcon
+                            className="w-4 h-4 opacity-60 transition-opacity duration-200 inline-block align-middle"
+                            style={{ verticalAlign: '-0.08rem', transform: 'translateY(-1px)' }}
+                          />
+                          <span className="sr-only">(opens in a new tab)</span>
+                        </a>
+                      )}
+                    </h3>
                   </div>
                 </div>
 

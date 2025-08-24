@@ -1,0 +1,16 @@
+/* Middle Earth font for Gandalf quote */
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap');
+
+.middle-earth {
+  font-family: 'UnifrakturCook', "Inter", serif;
+  letter-spacing: 0.01em;
+  font-size: 1.25rem;
+  line-height: 2.1rem;
+}
+
+@media (min-width: 640px) {
+  .middle-earth {
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+  }
+}

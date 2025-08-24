@@ -3,7 +3,8 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowRight, FileText, Database, Code, LineChart } from 'lucide-react';
-import { useState, useEffect, useMemo, useCallback } from 'react';
+import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
+import './HeroGrid.css';
 
 // Smooth scroll function
 const scrollToSection = (sectionId: string) => {
@@ -518,7 +519,7 @@ const CalmDashboard = (() => {
             <Database className="w-5 h-5 text-red-600 dark:text-indigo-400" />
             <span className="text-slate-900 dark:text-slate-200 text-sm font-medium">Dashboard</span>
           </div>
-          <span className="text-xs text-slate-600 dark:text-slate-400">metrics</span>
+          <span className="text-xs text-slate-600 dark:text-slate-400"></span>
         </div>
 
   <div className="grid grid-cols-2 gap-3 mb-4">
@@ -712,6 +713,10 @@ const slides = [
 // ====== Main Hero Component ======
 export function Hero() {
   const [current, setCurrent] = useState(0);
+  const gridRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const [warping, setWarping] = useState(false);
+  const [warp, setWarp] = useState({ x: 0.5, y: 0.5 });
 
   // Slower slide transitions for better performance
   useEffect(() => {
@@ -722,9 +727,169 @@ export function Hero() {
   const nextSlide = useCallback(() => setCurrent((p) => (p + 1) % slides.length), []);
   const prevSlide = useCallback(() => setCurrent((p) => (p - 1 + slides.length) % slides.length), []);
 
+  // Mouse move handler for grid warp (listen on the whole section)
+  useEffect(() => {
+    const target = sectionRef.current;
+    if (!target) return;
+
+    let animationFrameId: number;
+    
+    const handleMove = (e: MouseEvent) => {
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
+      
+      animationFrameId = requestAnimationFrame(() => {
+        const rect = target.getBoundingClientRect();
+        const x = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+        const y = Math.max(0, Math.min(1, (e.clientY - rect.top) / rect.height));
+        setWarp({ x, y });
+        if (!warping) setWarping(true);
+      });
+    };
+
+    const handleEnter = () => setWarping(true);
+    const handleLeave = () => {
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
+      setWarping(false);
+      setWarp({ x: 0.5, y: 0.5 });
+    };
+
+    target.addEventListener('mousemove', handleMove, { passive: true });
+    target.addEventListener('mouseenter', handleEnter);
+    target.addEventListener('mouseleave', handleLeave);
+
+    return () => {
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
+      target.removeEventListener('mousemove', handleMove);
+      target.removeEventListener('mouseenter', handleEnter);
+      target.removeEventListener('mouseleave', handleLeave);
+    };
+  }, [warping]);
+
   return (
 
-  <section className="relative min-h-screen flex items-center justify-center overflow-hidden pb-8 sm:pb-0">
+  <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden pb-8 sm:pb-0">
+
+      {/* Prominent SVG grid background with warp filter */}
+      <div
+        ref={gridRef}
+        className={`hero-grid-bg${warping ? ' warping' : ''}`}
+        aria-hidden="true"
+        style={{ zIndex: 2 }}
+      >
+        <svg
+          className="hero-grid-svg"
+          width="100%"
+          height="100%"
+          viewBox="0 0 1200 800"
+          preserveAspectRatio="none"
+        >
+          <defs>
+            <linearGradient id="gridStroke" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stopColor="#dc2626" stopOpacity="0.8" />
+              <stop offset="50%" stopColor="#ef4444" stopOpacity="0.9" />
+              <stop offset="100%" stopColor="#dc2626" stopOpacity="0.7" />
+            </linearGradient>
+            <linearGradient id="gridStrokeDark" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stopColor="#6366f1" stopOpacity="0.8" />
+              <stop offset="50%" stopColor="#818cf8" stopOpacity="0.9" />
+              <stop offset="100%" stopColor="#4f46e5" stopOpacity="0.7" />
+            </linearGradient>
+            {/* Simple but effective warp filter */}
+            <filter id="warp" x="-50%" y="-50%" width="200%" height="200%">
+              <feTurbulence 
+                type="turbulence" 
+                baseFrequency={warping ? "0.03 0.04" : "0.01 0.01"} 
+                numOctaves="3" 
+                seed="2" 
+                result="noise"
+              />
+              <feDisplacementMap 
+                in2="noise" 
+                in="SourceGraphic" 
+                scale={warping ? 50 : 0}
+                xChannelSelector="R" 
+                yChannelSelector="G"
+              />
+            </filter>
+          </defs>
+          
+          {/* Grid lines with transform and filter */}
+          <g
+            filter={warping ? 'url(#warp)' : undefined}
+            style={{
+              transform: warping 
+                ? `translate(${(warp.x - 0.5) * 40}px, ${(warp.y - 0.5) * 40}px) scale(${1 + Math.sqrt((warp.x - 0.5) ** 2 + (warp.y - 0.5) ** 2) * 0.3})`
+                : 'translate(0px, 0px) scale(1)',
+              transformOrigin: `${warp.x * 100}% ${warp.y * 100}%`,
+              transition: warping ? 'none' : 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
+            }}
+          >
+            {/* Vertical lines - Light mode */}
+            <g className="block dark:hidden">
+              {Array.from({ length: 25 }).map((_, i) => (
+                <line
+                  key={`v${i}`}
+                  x1={(i * 48)}
+                  y1={0}
+                  x2={(i * 48)}
+                  y2={800}
+                  stroke="url(#gridStroke)"
+                  strokeWidth={i % 5 === 0 ? 3 : 1.5}
+                  opacity={i % 5 === 0 ? 0.6 : 0.3}
+                />
+              ))}
+              {/* Horizontal lines */}
+              {Array.from({ length: 17 }).map((_, i) => (
+                <line
+                  key={`h${i}`}
+                  x1={0}
+                  y1={(i * 48)}
+                  x2={1200}
+                  y2={(i * 48)}
+                  stroke="url(#gridStroke)"
+                  strokeWidth={i % 5 === 0 ? 3 : 1.5}
+                  opacity={i % 5 === 0 ? 0.6 : 0.3}
+                />
+              ))}
+            </g>
+            
+            {/* Grid lines - Dark mode */}
+            <g className="hidden dark:block">
+              {Array.from({ length: 25 }).map((_, i) => (
+                <line
+                  key={`vd${i}`}
+                  x1={(i * 48)}
+                  y1={0}
+                  x2={(i * 48)}
+                  y2={800}
+                  stroke="url(#gridStrokeDark)"
+                  strokeWidth={i % 5 === 0 ? 3 : 1.5}
+                  opacity={i % 5 === 0 ? 0.6 : 0.3}
+                />
+              ))}
+              {/* Horizontal lines */}
+              {Array.from({ length: 17 }).map((_, i) => (
+                <line
+                  key={`hd${i}`}
+                  x1={0}
+                  y1={(i * 48)}
+                  x2={1200}
+                  y2={(i * 48)}
+                  stroke="url(#gridStrokeDark)"
+                  strokeWidth={i % 5 === 0 ? 3 : 1.5}
+                  opacity={i % 5 === 0 ? 0.6 : 0.3}
+                />
+              ))}
+            </g>
+          </g>
+        </svg>
+      </div>
 
       <div className="container mx-auto px-6 lg:px-8 relative z-10 pt-20">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -741,7 +906,7 @@ export function Hero() {
             </motion.h1>
 
             <motion.p variants={itemVariants} className="text-lg sm:text-xl lg:text-2xl text-slate-600 dark:text-slate-300 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-              UC San Diego Data Science student passionate about machine learning, research, and building impactful solutions.
+              UC San Diego undergraduate passionate about machine learning, research, and building real-world, impactful solutions.
             </motion.p>
 
             <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
