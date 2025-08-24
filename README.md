@@ -4,7 +4,7 @@ A modern, responsive portfolio website built with Next.js, showcasing data scien
 
 ## 🚀 Live Demo
 
-The portfolio is deployed and live at: [Your Domain Here]
+The portfolio is deployed and live at: [https://valpip123emy.github.io/portfolio.github.io/](https://valpip123emy.github.io/portfolio.github.io/)
 
 ## 🛠 Tech Stack
 
@@ -13,12 +13,12 @@ The portfolio is deployed and live at: [Your Domain Here]
 - **Animations**: Framer Motion
 - **Icons**: Lucide React
 - **Typography**: Google Fonts (Inter, Inter Tight, JetBrains Mono)
-- **Deployment**: Vercel (recommended) or any static hosting platform
+- **Deployment**: GitHub Pages
 
 ## 📁 Project Structure
 
 ```
-portfolio.io/
+portfolio.github.io/
 ├── src/
 │   ├── app/                    # Next.js App Router pages
 │   │   ├── layout.tsx         # Root layout
@@ -41,30 +41,29 @@ portfolio.io/
 
 ## 🚀 Quick Deployment
 
-### Option 1: Deploy to Vercel (Recommended)
+### GitHub Pages Deployment (Recommended)
 
-1. **Fork this repository**
-2. **Sign up for Vercel** at [vercel.com](https://vercel.com)
-3. **Import your forked repository** in Vercel dashboard
-4. **Deploy**: Vercel will automatically build and deploy your site
-5. **Custom domain** (optional): Add your custom domain in Vercel settings
+This repository is configured for automatic deployment to GitHub Pages:
 
-### Option 2: Deploy to Netlify
+1. **Fork this repository** to your GitHub account
+2. **Enable GitHub Pages** in your repository settings:
+   - Go to Settings → Pages
+   - Source: "GitHub Actions"
+3. **Push changes** to the main branch - deployment will happen automatically
+4. **Access your site** at `https://yourusername.github.io/portfolio.github.io/`
 
-1. **Fork this repository**
-2. **Sign up for Netlify** at [netlify.com](https://netlify.com)
-3. **Connect your repository** in Netlify dashboard
-4. **Build settings**:
-   - Build command: `npm run build`
-   - Publish directory: `out`
-5. **Deploy**: Netlify will build and deploy your site
+The GitHub Actions workflow will automatically:
+- Build the Next.js project
+- Generate static files
+- Deploy to GitHub Pages
+- Update your live site
 
-### Option 3: Manual Deployment
+### Manual Deployment
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/Valpip123EMY/portfolio.io.git
-   cd portfolio.io
+   git clone https://github.com/Valpip123EMY/portfolio.github.io.git
+   cd portfolio.github.io
    ```
 
 2. **Install dependencies**:
@@ -77,7 +76,7 @@ portfolio.io/
    npm run build
    ```
 
-4. **Deploy the `out` folder** to any static hosting service (GitHub Pages, AWS S3, etc.)
+4. **Deploy the `out` folder** to any static hosting service (GitHub Pages, Netlify, AWS S3, etc.)
 
 ## 🛠 Development
 
@@ -90,8 +89,8 @@ portfolio.io/
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/Valpip123EMY/portfolio.io.git
-   cd portfolio.io
+   git clone https://github.com/Valpip123EMY/portfolio.github.io.git
+   cd portfolio.github.io
    ```
 
 2. **Install dependencies**:
@@ -136,24 +135,19 @@ Add or modify projects in:
 
 ## 🌐 Deployment Configuration
 
-### Vercel Deployment
+### GitHub Pages Setup
 
 The project includes:
-- `vercel.json` - Vercel configuration
-- `.github/workflows/deploy.yml` - GitHub Actions for automatic deployment
+- `.github/workflows/nextjs.yml` - GitHub Actions workflow for automatic deployment
+- `next.config.js` - Next.js configuration for static export
 
-To set up automatic deployment:
-1. Get your Vercel token from [vercel.com/account/tokens](https://vercel.com/account/tokens)
-2. Add these secrets to your GitHub repository:
-   - `VERCEL_TOKEN` - Your Vercel token
-   - `ORG_ID` - Your Vercel organization ID
-   - `PROJECT_ID` - Your Vercel project ID
+The deployment is automatically configured and requires no additional setup. Just push to the main branch and GitHub Pages will build and deploy your site.
 
 ### Environment Variables
 
-For production deployment, you may want to add:
+For production deployment, you may want to add environment variables in your GitHub repository settings:
 - Google Analytics tracking ID
-- Contact form backend URL
+- Contact form backend URL  
 - Any API keys for external services
 
 ## 📱 Features
@@ -193,4 +187,4 @@ For support or questions, please open an issue in the GitHub repository or conta
 
 ---
 
-Built with ❤️ using Next.js and deployed on Vercel
+Built with ❤️ using Next.js and deployed on GitHub Pages
